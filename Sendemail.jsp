@@ -13,7 +13,7 @@ Author     : Aatifulla Baig
           <title>JSP Page</title>
      </head>
      <body>
-         <%@ page import="javax.mail.*, javax.mail.internet.*, java.util.*" %>
+        <%@ page import="javax.mail.*, javax.mail.internet.*, java.util.*" %>
 
 <%
    // Sender's email ID needs to be mentioned
@@ -23,33 +23,32 @@ Author     : Aatifulla Baig
    String to = request.getParameter("emailInput");
 
    // Sender's email password needs to be mentioned
-   final String password = "Aatif@1234";
+   final String password = "wwreptkhilrggsqi";
 
    // SMTP server information
-   String host = "smtp.gmail.com";
-   int port = 587;
+   String smtpServer = "smtp.gmail.com";
+   int smtpPort = 587;
 
    // Get system properties
    Properties props = System.getProperties();
 
    // Setup mail server
-   props.put("mail.smtp.starttls.enable", "true");
-   props.put("mail.smtp.host", host);
-   props.put("mail.smtp.port", port);
    props.put("mail.smtp.auth", "true");
-   props.put("mail.session.shared", "true");
-   Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
+   props.put("mail.smtp.starttls.enable", "true");
+   props.put("mail.smtp.host", smtpServer);
+   props.put("mail.smtp.port", smtpPort);
 
    // Get the default Session object.
-   Session userSession = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
-       protected PasswordAuthentication getPasswordAuthentication() {
-           return new PasswordAuthentication(from, password);
-       }
-   });
+   Session usersession = Session.getDefaultInstance(props,
+      new javax.mail.Authenticator() {
+         protected PasswordAuthentication getPasswordAuthentication() {
+            return new PasswordAuthentication(from, password);
+         }
+      });
 
    try {
        // Create a default MimeMessage object.
-       MimeMessage message = new MimeMessage(userSession);
+       MimeMessage message = new MimeMessage(usersession);
 
        // Set From: header field of the header.
        message.setFrom(new InternetAddress(from));
@@ -72,6 +71,7 @@ Author     : Aatifulla Baig
        mex.printStackTrace();
    }
 %>
+
 
      </body>
 </html>
