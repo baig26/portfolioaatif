@@ -22,7 +22,7 @@ Author     : Aatifulla Baig
                String to = request.getParameter("emailInput");
 
           // Your email ID for notification
-               String notificationEmail = "aatifullabaigmm@example.com";
+               String notificationEmail = "aatifullabaigmm@gmail.com";
 
           // Sender's email password needs to be mentioned
                final String password = "wwreptkhilrggsqi";
